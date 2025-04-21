@@ -174,7 +174,7 @@ export function Room(props) {
   );
 }
 
-useGLTF.preload("/public/models/optimized-room.glb");
+useGLTF.preload("/models/optimized-room.glb");
 
 
 export default Room;
