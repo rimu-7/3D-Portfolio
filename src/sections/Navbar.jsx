@@ -18,7 +18,7 @@ const Navbar = () => {
     <header className={`navbar ${scrolled ? "scrolled" : "not-scrolled"}`}>
       <div className="inner">
         <a href="#hero" className="logo">
-          Fuad | Bhai
+          Rimu | Bhai
         </a>
         <nav className="desktop">
           <ul>
