@@ -71,6 +71,7 @@ const Contact = () => {
                     onChange={handleChange}
                     placeholder="What's your good name?"
                     required
+                    className="focus:outline-none"
                   />
                 </div>
 
@@ -84,6 +85,7 @@ const Contact = () => {
                     onChange={handleChange}
                     placeholder="What's your email address?"
                     required
+                    className="focus:outline-none"
                   />
                 </div>
 
@@ -97,6 +99,7 @@ const Contact = () => {
                     placeholder="How can I help you?"
                     rows="5"
                     required
+                    className="focus:outline-none"
                   />
                 </div>
 
