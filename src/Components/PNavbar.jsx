@@ -11,7 +11,7 @@ const PNavbar = () => {
     },
     {
       name: "Experience",
-      link: "/",
+      link: "/#exprience",
     },
     {
       name: "Skills",
