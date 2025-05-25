@@ -5,7 +5,7 @@ import HeroExpriences from "../Components/HeroModels/HeroExpriences";
 import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
 import AnimatedCounter from "../Components/AnimatedCounter";
-
+import DownloadButton from "../Components/cv/DownloadButton";
 
 const Hero = () => {
   useGSAP(() => {
@@ -53,20 +53,29 @@ const Hero = () => {
               Hi, I'm Rimu, a developer based in Bangladesh with a passion for
               code
             </p>
-            <Button className="md:w-80 md:h-16 w-60 h-12"
-                    id="button"
-                    text="See my Work"
-            />
+            {/* Buttons here */}
+            <div className="flex flex-col sm:flex-row gap-4">
+              <Button
+                className="md:w-80 md:h-16 w-60 h-12"
+                id="button"
+                text="See my Work"
+              />
+              <Button
+                className="md:w-80 md:h-16 w-60 h-12"
+                text="Download CV"
+                dropdown={true}
+              />
+            </div>
           </div>
         </header>
         {/* right side */}
         <figure>
-            <div className="hero-3d-layout">
-                <HeroExpriences/>
-            </div>
+          <div className="hero-3d-layout">
+            <HeroExpriences />
+          </div>
         </figure>
       </div>
-      <AnimatedCounter/>
+      <AnimatedCounter />
     </section>
   );
 };

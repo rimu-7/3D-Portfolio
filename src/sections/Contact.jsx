@@ -1,5 +1,5 @@
 import { useRef, useState } from "react";
-import { toast, ToastContainer } from "react-toastify";
+import { toast, ToastContainer, Zoom } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
 import ContactExperience from "../Components/Models/Contact/ContactExprience";
@@ -127,18 +127,16 @@ const Contact = () => {
       
       {/* Toast Container - added with minimal styling to match your design */}
       <ToastContainer
-        position="top-right"
-        autoClose={5000}
-        hideProgressBar={false}
-        newestOnTop={false}
-        closeOnClick
-        rtl={false}
-        pauseOnFocusLoss
-        draggable
-        pauseOnHover
-        toastClassName="bg-[#1e1e1e] text-white"
-        progressClassName="bg-[#cd7c2e]"
-      />
+          position="top-center"
+          autoClose={2000}
+          hideProgressBar={true}
+          closeOnClick
+          pauseOnHover
+          draggable
+          pauseOnFocusLoss
+          theme="dark"
+          transition={Zoom}
+        />
     </section>
   );
 };

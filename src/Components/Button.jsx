@@ -1,40 +1,86 @@
-/**
- * A reusable CTA button component.
- * When clicked, it scrolls smoothly to the section with ID "counter",
- * with a small offset from the top for better visual placement.
- */
+import { useState, useRef, useEffect } from "react";
 
-const Button = ({ text, className, id }) => {
+const Button = ({ text, className, id, dropdown }) => {
+  const [isOpen, setIsOpen] = useState(false);
+  const dropdownRef = useRef(null);
+
+  // Close dropdown when clicking outside
+  useEffect(() => {
+    const handleClickOutside = (event) => {
+      if (dropdownRef.current && !dropdownRef.current.contains(event.target)) {
+        setIsOpen(false);
+      }
+    };
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside);
+    };
+  }, []);
+
+  const handleClick = (e) => {
+    if (!dropdown) {
+      e.preventDefault();
+      const target = document.getElementById("counter");
+      if (target && id) {
+        const offset = window.innerHeight * 0.15;
+        const top =
+          target.getBoundingClientRect().top + window.pageYOffset - offset;
+        window.scrollTo({ top, behavior: "smooth" });
+      }
+    } else {
+      setIsOpen(!isOpen);
+    }
+  };
+
   return (
-    <a
-      onClick={(e) => {
-        e.preventDefault(); // Stop the link from jumping instantly
-
-        const target = document.getElementById("counter"); // Find the section with ID "counter"
-
-        // Only scroll if we found the section and an ID is passed in
-        // taht prevents the contact button from scrolling to the top
-        if (target && id) {
-          const offset = window.innerHeight * 0.15; // Leave a bit of space at the top
-
-          // Calculate how far down the page we need to scroll
-          const top =
-            target.getBoundingClientRect().top + window.pageYOffset - offset;
-
-          // Scroll smoothly to that position
-          window.scrollTo({ top, behavior: "smooth" });
-        }
-      }}
-      className={`${className ?? ""} cta-wrapper`} // Add base + extra class names
-    >
-      <div className="cta-button group">
-        <div className="bg-circle" />
-        <p className="text">{text}</p>
-        <div className="arrow-wrapper">
-          <img src="/images/arrow-down.svg" alt="arrow" />
+    <div className="relative inline-block" ref={dropdownRef}>
+      <a
+        onClick={handleClick}
+        className={`${className ?? ""} cta-wrapper cursor-pointer`}
+      >
+        <div className="cta-button group">
+          <div className="bg-circle" />
+          <p className="text">{text}</p>
+          <div className="arrow-wrapper">
+            <img src="/images/arrow-down.svg" alt="arrow" />
+          </div>
         </div>
-      </div>
-    </a>
+      </a>
+
+      {/* Dropdown content */}
+      {dropdown && isOpen && (
+        <div className="">
+          <div className="py-1">
+            <a
+              href="./Mutasim fuad rimu.pdf"
+              download="MutasimFuadRimu_CV_English.pdf"
+              className="flex items-center text-sm text-gray-300 rounded hover:text-blue-600 transition-colors duration-200"
+            >
+              <div className="cta-button group">
+                <div className="bg-circle" />
+                <p className="text">English Version</p>
+                <div className="arrow-wrapper">
+                  <img src="/images/arrow-down.svg" alt="arrow" />
+                </div>
+              </div>
+            </a>
+            <a
+              href="./Mutasim fuad rimu-1.pdf"
+              download="复原_MutasimFuadRimu_CV_中文.pdf"
+              className="flex items-center transition-colors duration-200"
+            >
+              <div className="cta-button group">
+                <div className="bg-circle" />
+                <p className="text px-1">中文版本 Chinese</p>
+                <div className="arrow-wrapper">
+                  <img src="/images/arrow-down.svg" alt="arrow" />
+                </div>
+              </div>
+            </a>
+          </div>
+        </div>
+      )}
+    </div>
   );
 };
 

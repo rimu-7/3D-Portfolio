@@ -440,7 +440,7 @@ section {
   transform: translate(-50%, -50%);
   border-radius: 12px;
   border: 2px solid transparent;
-  background: var(--gradient);
+  background: #1bf87b;
   background-attachment: fixed;
   mask: linear-gradient(#0000, #0000),
     conic-gradient(

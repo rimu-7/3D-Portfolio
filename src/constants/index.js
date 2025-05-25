@@ -11,8 +11,13 @@ const navLinks = [
       name: "Skills",
       link: "#skills",
     },
+    {
+      name: "Projects",
+      link: "./projects",
+    },
     
   ];
+
   
   const words = [
     { text: "Ideas", imgPath: "/images/ideas.svg" },
