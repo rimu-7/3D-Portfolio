@@ -4,7 +4,8 @@ import { Link, useLocation } from "react-router-dom";
 
 const Navbar = () => {
   const [scrolled, setScrolled] = useState(false);
-  const location = useLocation();
+
+
 
   useEffect(() => {
     const handleScroll = () => {
@@ -29,7 +30,11 @@ const Navbar = () => {
   return (
     <header className={`navbar ${scrolled ? "scrolled" : "not-scrolled"}`}>
       <div className="inner">
-        <a href="#hero" onClick={(e) => handleSmoothScroll(e, "#hero")} className="logo">
+        <a
+          href="#hero"
+          onClick={(e) => handleSmoothScroll(e, "#hero")}
+          className="logo"
+        >
           Rimu | Bhai
         </a>
 
@@ -56,7 +61,7 @@ const Navbar = () => {
         <a
           href="#contact"
           onClick={(e) => handleSmoothScroll(e, "#contact")}
-          className="contact-btn group"
+          className="px-3 py-2 group bg-green-500 hover:border-2 hover:bg-neutral-900 border-2  text-black hover:border-green-500 rounded-lg duration-500 transition-colors text--900 hover:text-green-500"
         >
           <div className="inner">
             <span>Contact me</span>
