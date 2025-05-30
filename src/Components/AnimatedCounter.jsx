@@ -20,24 +20,24 @@ const AnimatedCounter = () => {
   };
 
   return (
-    <div id="counter" className=" ">
-      <div className="mx-auto px-20 grid-4-cols">
+    <div id="counter" className="w-full py-10">
+      <div className="max-w-[95%] mx-auto px-4 sm:px-6 lg:px-8 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
         {counterItems.map((item, index) => (
           <div
             key={item.label}
             ref={(el) => (cardRefs.current[index] = el)}
             onMouseMove={handleMouseMove(index)}
-            className="card bg-zinc-900 rounded-lg p-10 flex flex-col justify-center relative overflow-hidden isolate"
+            className="card bg-zinc-900 rounded-2xl p-6 sm:p-8 lg:p-10 flex flex-col justify-center items-center relative overflow-hidden isolate transition-transform duration-300"
             style={{
               "--start": "0",
               "--border-color": "#1bf87b",
             }}
           >
-            <div className="counter-number text-white text-5xl font-bold mb-2 relative z-10">
+            <div className="counter-number text-white text-3xl sm:text-4xl lg:text-5xl font-bold mb-2 relative z-10 text-center">
               <CountUp suffix={item.suffix} end={item.value} />
-              <div className="text-white text-3xl font-normal mt-2">
-                {item.label}
-              </div>
+            </div>
+            <div className="text-white text-lg sm:text-xl lg:text-2xl font-normal mt-2 text-center">
+              {item.label}
             </div>
           </div>
         ))}
